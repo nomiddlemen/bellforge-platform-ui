@@ -1,109 +1,103 @@
-export default function Home() {
+export default function Dashboard() {
   return (
-    <>
-      {/* Hero */}
-      <div className="relative w-full h-96 bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative text-center text-white z-10 max-w-3xl px-8">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Your ETA Search<br />
-            <span className="italic font-light">Five stages to success</span>
-          </h1>
-          <p className="text-lg text-white/90 mb-8">
-            From self-assessment to operational planning, we guide you through every step of finding and acquiring your company
-          </p>
-          <div className="flex gap-4 justify-center">
-            <a href="/searcher/assessment" className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary-600 transition-colors">
-              Start Your Journey
-            </a>
-            <a href="#workflow" className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary-600 transition-colors">
-              View Workflow
-            </a>
-          </div>
-        </div>
+    <div className="max-w-7xl mx-auto px-8 py-12">
+      {/* Welcome */}
+      <div className="mb-12">
+        <h1 className="text-4xl font-bold text-slate-900 mb-2">Welcome back</h1>
+        <p className="text-lg text-slate-600">Continue your ETA search journey</p>
       </div>
 
-      {/* Workflow Section */}
-      <div id="workflow" className="max-w-7xl mx-auto px-8 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center">Five-Stage Process</h2>
-        <p className="text-center text-slate-600 mb-12">Follow the complete ETA workflow</p>
+      {/* Stages Grid */}
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold text-slate-900 mb-8">Your Workflow</h2>
 
-        {/* Desktop - horizontal */}
-        <div className="hidden md:block mb-12">
-          {/* Connection lines */}
-          <svg className="w-full h-20 mb-4" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <line x1="80" y1="40" x2="240" y2="40" stroke="#d1d5db" strokeWidth="2" />
-            <line x1="280" y1="40" x2="440" y2="40" stroke="#d1d5db" strokeWidth="2" />
-            <line x1="480" y1="40" x2="640" y2="40" stroke="#d1d5db" strokeWidth="2" />
-            <line x1="680" y1="40" x2="840" y2="40" stroke="#d1d5db" strokeWidth="2" />
-          </svg>
-
-          <div className="grid grid-cols-5 gap-4">
-            {[
-              { num: 1, title: 'Assessment', desc: 'Profile & readiness' },
-              { num: 2, title: 'Thesis', desc: 'Define your focus' },
-              { num: 3, title: 'Discovery', desc: 'Find targets' },
-              { num: 4, title: 'Deal', desc: 'Outreach & terms' },
-              { num: 5, title: 'Operations', desc: '100-day plan' },
-            ].map((stage, i) => (
-              <a
-                key={i}
-                href={`/searcher/${['assessment', 'thesis', 'discovery', 'deal', 'operations'][i]}`}
-                className="group text-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-primary-100 text-primary-600 font-bold text-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary-600 group-hover:text-white transition-colors">
-                  {stage.num}
-                </div>
-                <h3 className="font-semibold text-slate-900 group-hover:text-primary-600 transition-colors">{stage.title}</h3>
-                <p className="text-sm text-slate-600 mt-1">{stage.desc}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile - vertical */}
-        <div className="md:hidden space-y-3">
+        {/* Desktop - 5 columns */}
+        <div className="hidden md:grid md:grid-cols-5 gap-4">
           {[
-            { num: 1, title: 'Assessment', desc: 'Profile & readiness' },
-            { num: 2, title: 'Thesis', desc: 'Define your focus' },
-            { num: 3, title: 'Discovery', desc: 'Find targets' },
-            { num: 4, title: 'Deal', desc: 'Outreach & terms' },
-            { num: 5, title: 'Operations', desc: '100-day plan' },
+            { num: 1, title: 'Assessment', desc: 'Profile & readiness', path: '/searcher/assessment', status: 'done' },
+            { num: 2, title: 'Thesis', desc: 'Define your focus', path: '/searcher/thesis', status: 'done' },
+            { num: 3, title: 'Discovery', desc: 'Find targets', path: '/searcher/discovery', status: 'current' },
+            { num: 4, title: 'Deal', desc: 'Outreach & terms', path: '/searcher/deal', status: 'next' },
+            { num: 5, title: 'Operations', desc: '100-day plan', path: '/searcher/operations', status: 'next' },
           ].map((stage, i) => (
             <a
               key={i}
-              href={`/searcher/${['assessment', 'thesis', 'discovery', 'deal', 'operations'][i]}`}
-              className="flex items-center gap-4 p-4 rounded-lg border border-slate-200 group hover:border-primary-600 hover:bg-primary-50 transition-colors"
+              href={stage.path}
+              className={`p-6 rounded-lg border-2 transition-all group ${
+                stage.status === 'done'
+                  ? 'border-primary-600 bg-primary-50 hover:shadow-lg'
+                  : stage.status === 'current'
+                  ? 'border-primary-600 bg-white shadow-md hover:shadow-lg'
+                  : 'border-slate-200 bg-slate-50 hover:border-slate-300'
+              }`}
             >
-              <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-600 font-bold flex items-center justify-center flex-shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors">
-                {stage.num}
+              <div className="flex items-start justify-between mb-4">
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                  stage.status === 'done'
+                    ? 'bg-primary-600 text-white'
+                    : stage.status === 'current'
+                    ? 'bg-primary-100 text-primary-600'
+                    : 'bg-slate-200 text-slate-600'
+                }`}>
+                  {stage.status === 'done' ? '✓' : stage.num}
+                </div>
+                {stage.status === 'current' && <span className="text-primary-600 font-semibold text-xs">CURRENT</span>}
               </div>
-              <div>
-                <h3 className="font-semibold text-slate-900">{stage.title}</h3>
-                <p className="text-sm text-slate-600">{stage.desc}</p>
+              <h3 className="font-semibold text-slate-900 mb-1">{stage.title}</h3>
+              <p className="text-sm text-slate-600">{stage.desc}</p>
+            </a>
+          ))}
+        </div>
+
+        {/* Mobile - 2 columns */}
+        <div className="md:hidden grid grid-cols-2 gap-3">
+          {[
+            { num: 1, title: 'Assessment', desc: 'Profile', path: '/searcher/assessment', status: 'done' },
+            { num: 2, title: 'Thesis', desc: 'Focus', path: '/searcher/thesis', status: 'done' },
+            { num: 3, title: 'Discovery', desc: 'Targets', path: '/searcher/discovery', status: 'current' },
+            { num: 4, title: 'Deal', desc: 'Outreach', path: '/searcher/deal', status: 'next' },
+            { num: 5, title: 'Operations', desc: '100-day', path: '/searcher/operations', status: 'next' },
+          ].map((stage, i) => (
+            <a
+              key={i}
+              href={stage.path}
+              className={`p-4 rounded-lg border-2 transition-all text-center ${
+                stage.status === 'done'
+                  ? 'border-primary-600 bg-primary-50 hover:shadow-md'
+                  : stage.status === 'current'
+                  ? 'border-primary-600 bg-white shadow-md'
+                  : 'border-slate-200 bg-slate-50'
+              }`}
+            >
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-2 ${
+                stage.status === 'done'
+                  ? 'bg-primary-600 text-white'
+                  : stage.status === 'current'
+                  ? 'bg-primary-100 text-primary-600'
+                  : 'bg-slate-200 text-slate-600'
+              }`}>
+                {stage.status === 'done' ? '✓' : stage.num}
               </div>
+              <h3 className="font-semibold text-slate-900 text-sm">{stage.title}</h3>
+              <p className="text-xs text-slate-600 mt-0.5">{stage.desc}</p>
             </a>
           ))}
         </div>
       </div>
 
       {/* Stats */}
-      <div className="bg-slate-50 py-12">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-3 gap-8 text-center">
-            {[
-              { label: 'Active Searchers', value: '120+' },
-              { label: 'Deals Closed', value: '45' },
-              { label: 'Success Rate', value: '82%' },
-            ].map(s => (
-              <div key={s.label}>
-                <p className="text-3xl font-bold text-primary-600 mb-2">{s.value}</p>
-                <p className="text-slate-600 font-medium">{s.label}</p>
-              </div>
-            ))}
+      <div className="grid grid-cols-3 gap-4">
+        {[
+          { label: 'Reviewed', value: '24' },
+          { label: 'Watchlist', value: '8' },
+          { label: 'Contacted', value: '3' },
+        ].map(s => (
+          <div key={s.label} className="p-4 rounded-lg bg-white border border-slate-200">
+            <p className="text-xs text-slate-600 font-semibold uppercase mb-2">{s.label}</p>
+            <p className="text-3xl font-bold text-primary-600">{s.value}</p>
           </div>
-        </div>
+        ))}
       </div>
-    </>
+    </div>
   )
 }

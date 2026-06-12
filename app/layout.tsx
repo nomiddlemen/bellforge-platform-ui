@@ -16,18 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-white text-slate-900">
+      <body className="bg-slate-50 text-slate-900">
         {/* Header */}
-        <header className="bg-white border-b border-slate-200">
+        <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
             <a href="/" className="text-2xl font-bold text-primary-600">Bellforge</a>
             <nav className="flex items-center gap-8">
-              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Home</a>
-              <a href="/searcher/assessment" className="text-sm font-medium text-slate-700 hover:text-slate-900">Platform</a>
-              <a href="#" className="text-sm font-medium text-slate-700 hover:text-slate-900">About</a>
-              <button className="px-6 py-2 border-2 border-primary-600 text-primary-600 font-medium rounded-full hover:bg-primary-50 transition-colors">
-                Sign in
-              </button>
+              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Dashboard</a>
+              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Profile</a>
+              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Help</a>
             </nav>
           </div>
         </header>
