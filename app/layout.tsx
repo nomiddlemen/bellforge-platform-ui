@@ -16,15 +16,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-slate-50 text-slate-900">
-        {/* Header */}
-        <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-            <a href="/" className="text-2xl font-bold text-primary-600">Bellforge</a>
-            <nav className="flex items-center gap-8">
-              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Dashboard</a>
-              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Profile</a>
-              <a href="/" className="text-sm font-medium text-slate-700 hover:text-slate-900">Help</a>
+      <body className="bg-white text-slate-900">
+        {/* Header - exactly like screenshot */}
+        <header className="bg-white border-b border-slate-200">
+          <div className="max-w-full px-8 py-4 flex items-center justify-between">
+            <a href="/" className="text-xl font-bold text-primary-600">Bellforge</a>
+            <nav className="flex items-center gap-12">
+              <a href="/" className="text-sm font-medium text-slate-900 hover:text-primary-600">Home</a>
+              <a href="/" className="text-sm font-medium text-slate-900 hover:text-primary-600">Vision</a>
+              <a href="/" className="text-sm font-medium text-slate-900 hover:text-primary-600">About</a>
+              <a href="/" className="text-sm font-medium text-slate-900 hover:text-primary-600">Contact</a>
+              <a href="/" className="text-sm font-medium text-slate-900 hover:text-primary-600">Blog</a>
             </nav>
           </div>
         </header>
