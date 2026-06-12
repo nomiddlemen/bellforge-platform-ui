@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Bellforge',
-  description: 'European ETA platform',
+  title: 'Bellforge Platform',
+  description: 'AI-powered ETA platform',
 }
 
 export default function RootLayout({
@@ -16,26 +16,70 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-slate-900 text-slate-900">
-        {/* Header */}
-        <header className="fixed top-0 w-full bg-gradient-to-r from-slate-800 to-slate-700 z-50 shadow-lg">
-          <div className="max-w-full px-12 py-5 flex items-center justify-between">
-            <a href="/" className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
-              </div>
-            </a>
-            <nav className="flex items-center gap-10">
-              <a href="/" className="text-sm font-medium text-white hover:text-primary-400">Home</a>
-              <a href="/" className="text-sm font-medium text-white hover:text-primary-400">Vision</a>
-              <a href="/" className="text-sm font-medium text-white hover:text-primary-400">About</a>
-              <a href="/" className="text-sm font-medium text-white hover:text-primary-400">Contact</a>
-              <a href="/" className="text-sm font-medium text-white hover:text-primary-400">Blog</a>
-            </nav>
-          </div>
-        </header>
+      <body className="bg-slate-50 text-slate-900">
+        <div className="flex h-screen">
+          {/* Sidebar */}
+          <nav className="w-64 bg-white border-r border-slate-200 flex flex-col overflow-hidden">
+            <div className="p-6 border-b border-slate-200">
+              <h1 className="text-xl font-bold text-slate-900">Bellforge</h1>
+              <p className="text-sm text-slate-600 mt-1">ETA Platform</p>
+            </div>
 
-        <main className="pt-20">{children}</main>
+            {/* User Type Selector */}
+            <div className="p-4 border-b border-slate-200">
+              <label className="text-xs font-semibold text-slate-600 uppercase tracking-wide block mb-2">
+                Mode
+              </label>
+              <select className="w-full px-3 py-2 text-sm border border-slate-200 rounded bg-white text-slate-900 focus:outline-none focus:border-primary-600">
+                <option value="searcher">🔍 Searcher</option>
+                <option value="investor">💼 Investor</option>
+                <option value="fund">📊 Fund</option>
+                <option value="admin">⚙️ Admin</option>
+              </select>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="space-y-6">
+                <div>
+                  <p className="text-xs font-semibold text-slate-600 uppercase tracking-wide mb-3">
+                    Your Journey
+                  </p>
+                  <nav className="space-y-1">
+                    {[
+                      { num: '1', label: 'Assessment', path: '/searcher/assessment' },
+                      { num: '2', label: 'Thesis', path: '/searcher/thesis' },
+                      { num: '3', label: 'Discovery', path: '/searcher/discovery' },
+                      { num: '4', label: 'Deal', path: '/searcher/deal' },
+                      { num: '5', label: 'Operations', path: '/searcher/operations' },
+                    ].map(item => (
+                      <a
+                        key={item.path}
+                        href={item.path}
+                        className="flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded transition-colors"
+                      >
+                        <span className="font-semibold text-primary-600">{item.num}</span>
+                        {item.label}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 border-t border-slate-200 text-xs text-slate-500">
+              <button className="w-full px-3 py-2 text-left hover:bg-slate-50 rounded">
+                Logout
+              </button>
+            </div>
+          </nav>
+
+          {/* Main Content */}
+          <main className="flex-1 overflow-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   )

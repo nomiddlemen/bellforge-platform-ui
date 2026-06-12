@@ -1,24 +1,68 @@
-export default function Page() {
+export default function DealPage() {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-12">
+    <div className="p-8 max-w-6xl">
       <div className="mb-8">
-        <span className="text-sm font-semibold text-primary-600 uppercase">Stage STAGE of 5</span>
-        <h1 className="text-4xl font-bold text-slate-900 mt-2 mb-3">STAGE Title</h1>
-        <p className="text-lg text-slate-600">STAGE description</p>
+        <div className="inline-block px-3 py-1 bg-primary-100 text-primary-700 text-xs font-semibold rounded mb-4">
+          Stage 4 of 5
+        </div>
+        <h1 className="text-4xl font-bold text-slate-900 mb-3">Build the Deal</h1>
+        <p className="text-lg text-slate-600">
+          Outreach, LOI preparation, and deal management tools.
+        </p>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 p-8 mb-8">
-        <div className="space-y-6">
-          <div>
-            <label className="block text-sm font-semibold text-slate-900 mb-3">Form Field</label>
-            <input type="text" placeholder="Enter text" className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" />
-          </div>
+      <div className="grid grid-cols-3 gap-6 mb-8">
+        <div className="bg-white p-6 rounded-lg border border-slate-200">
+          <p className="text-xs text-slate-500 font-semibold uppercase mb-1">Active Outreach</p>
+          <p className="text-3xl font-bold text-slate-900">12</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg border border-slate-200">
+          <p className="text-xs text-slate-500 font-semibold uppercase mb-1">In Negotiation</p>
+          <p className="text-3xl font-bold text-slate-900">3</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg border border-slate-200">
+          <p className="text-xs text-slate-500 font-semibold uppercase mb-1">LOIs Signed</p>
+          <p className="text-3xl font-bold text-slate-900">1</p>
         </div>
       </div>
 
-      <div className="flex gap-3">
-        <button className="px-6 py-2.5 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50">Back</button>
-        <button className="ml-auto px-6 py-2.5 border-2 border-primary-600 text-primary-600 font-semibold rounded-full hover:bg-primary-600 hover:text-white transition-colors">Next</button>
+      <div className="grid grid-cols-2 gap-8">
+        {/* Deals */}
+        <div className="space-y-4">
+          <h2 className="font-semibold text-slate-900 text-lg">Deal Pipeline</h2>
+          {[
+            { name: 'Company A', stage: 'Outreach', date: 'Today' },
+            { name: 'Company B', stage: 'Initial Call', date: '3 days ago' },
+            { name: 'Company C', stage: 'LOI Preparation', date: '1 week ago' },
+          ].map((deal, i) => (
+            <div key={i} className="bg-white p-4 rounded-lg border border-slate-200">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-semibold text-slate-900">{deal.name}</h3>
+                <span className="text-xs px-2 py-1 bg-primary-100 text-primary-700 rounded">{deal.stage}</span>
+              </div>
+              <p className="text-xs text-slate-500">{deal.date}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Tools */}
+        <div className="space-y-4">
+          <h2 className="font-semibold text-slate-900 text-lg">Tools</h2>
+          <div className="space-y-3">
+            <button className="w-full bg-white p-4 rounded-lg border border-slate-200 text-left hover:bg-slate-50 transition-colors">
+              <p className="font-semibold text-slate-900">Email Drafting</p>
+              <p className="text-xs text-slate-500 mt-1">AI-assisted outreach templates</p>
+            </button>
+            <button className="w-full bg-white p-4 rounded-lg border border-slate-200 text-left hover:bg-slate-50 transition-colors">
+              <p className="font-semibold text-slate-900">LOI Builder</p>
+              <p className="text-xs text-slate-500 mt-1">Structured letter of intent</p>
+            </button>
+            <button className="w-full bg-white p-4 rounded-lg border border-slate-200 text-left hover:bg-slate-50 transition-colors">
+              <p className="font-semibold text-slate-900">Diligence Checklist</p>
+              <p className="text-xs text-slate-500 mt-1">Track your due diligence</p>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )

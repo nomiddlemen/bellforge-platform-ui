@@ -1,24 +1,52 @@
-export default function Page() {
+export default function DiscoveryPage() {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-12">
+    <div className="p-8 max-w-6xl">
       <div className="mb-8">
-        <span className="text-sm font-semibold text-primary-600 uppercase">Stage STAGE of 5</span>
-        <h1 className="text-4xl font-bold text-slate-900 mt-2 mb-3">STAGE Title</h1>
-        <p className="text-lg text-slate-600">STAGE description</p>
-      </div>
-
-      <div className="bg-white rounded-lg border border-slate-200 p-8 mb-8">
-        <div className="space-y-6">
-          <div>
-            <label className="block text-sm font-semibold text-slate-900 mb-3">Form Field</label>
-            <input type="text" placeholder="Enter text" className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" />
-          </div>
+        <div className="inline-block px-3 py-1 bg-primary-100 text-primary-700 text-xs font-semibold rounded mb-4">
+          Stage 3 of 5
         </div>
+        <h1 className="text-4xl font-bold text-slate-900 mb-3">Find Target Companies</h1>
+        <p className="text-lg text-slate-600">
+          Search and evaluate companies matching your thesis.
+        </p>
       </div>
 
-      <div className="flex gap-3">
-        <button className="px-6 py-2.5 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50">Back</button>
-        <button className="ml-auto px-6 py-2.5 border-2 border-primary-600 text-primary-600 font-semibold rounded-full hover:bg-primary-600 hover:text-white transition-colors">Next</button>
+      {/* Search Bar */}
+      <div className="mb-8 bg-white p-6 rounded-lg border border-slate-200">
+        <input
+          type="text"
+          placeholder="Search by company name, sector, or criteria..."
+          className="w-full px-4 py-3 border border-slate-200 rounded text-slate-900 focus:outline-none focus:border-primary-600"
+        />
+      </div>
+
+      {/* Results */}
+      <div className="space-y-4">
+        {[1, 2, 3, 4, 5].map(i => (
+          <div key={i} className="bg-white p-6 rounded-lg border border-slate-200 hover:border-slate-300 cursor-pointer transition-colors">
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <h3 className="font-semibold text-slate-900 text-lg">Example Company {i}</h3>
+                <p className="text-sm text-slate-600">Software / Belgium</p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-slate-500">ETA Score</p>
+                <p className="text-2xl font-bold text-primary-600">8.2</p>
+              </div>
+            </div>
+            <p className="text-sm text-slate-700 mb-4">
+              Example company description with relevant financial metrics and operational opportunities.
+            </p>
+            <div className="flex gap-3">
+              <button className="px-4 py-2 bg-primary-100 text-primary-700 font-semibold rounded text-sm hover:bg-primary-200 transition-colors">
+                + Watchlist
+              </button>
+              <button className="px-4 py-2 bg-primary-600 text-white font-semibold rounded text-sm hover:bg-primary-700 transition-colors">
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
