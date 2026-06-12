@@ -1,65 +1,24 @@
-export default function Operations() {
+export default function Page() {
   return (
-    <div className="flex flex-col h-full">
-      <div className="border-b border-slate-200 bg-slate-0">
-        <div className="max-w-6xl mx-auto px-8 py-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary-50 text-primary-700 text-xs font-semibold rounded-full mb-2">
-            <span className="w-2 h-2 bg-primary-500 rounded-full"></span>Stage 5 of 5
-          </span>
-          <h1 className="text-3xl font-bold text-slate-900 mt-2">Operational Planning</h1>
-          <p className="text-slate-600 mt-2">100-day plan, value levers, and KPI tracking</p>
+    <div className="max-w-4xl mx-auto px-8 py-12">
+      <div className="mb-8">
+        <span className="text-sm font-semibold text-primary-600 uppercase">Stage STAGE of 5</span>
+        <h1 className="text-4xl font-bold text-slate-900 mt-2 mb-3">STAGE Title</h1>
+        <p className="text-lg text-slate-600">STAGE description</p>
+      </div>
+
+      <div className="bg-white rounded-lg border border-slate-200 p-8 mb-8">
+        <div className="space-y-6">
+          <div>
+            <label className="block text-sm font-semibold text-slate-900 mb-3">Form Field</label>
+            <input type="text" placeholder="Enter text" className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" />
+          </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto">
-        <div className="max-w-6xl mx-auto px-8 py-8">
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            {[
-              { label: 'Days Elapsed', value: '32' },
-              { label: 'Key Initiatives', value: '8' },
-              { label: 'Health', value: 'On Track' },
-            ].map((s, i) => (
-              <div key={i} className="bg-slate-0 rounded-lg border border-slate-200 p-4">
-                <p className="text-xs text-slate-600 font-semibold uppercase mb-2">{s.label}</p>
-                <p className="text-2xl font-bold text-slate-900">{s.value}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-2 gap-6">
-            <div className="bg-slate-0 rounded-lg border border-slate-200 p-6">
-              <h3 className="font-semibold text-slate-900 mb-4">100-Day Plan</h3>
-              <div className="space-y-3">
-                {[
-                  { phase: 'Days 1-30', focus: 'Quick wins' },
-                  { phase: 'Days 31-60', focus: 'Process improvements' },
-                  { phase: 'Days 61-100', focus: 'Growth & scaling' },
-                ].map((p, i) => (
-                  <div key={i} className="pb-3 border-b border-slate-200 last:border-b-0">
-                    <p className="font-medium text-slate-900 text-sm">{p.phase}</p>
-                    <p className="text-xs text-slate-600 mt-1">{p.focus}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-slate-0 rounded-lg border border-slate-200 p-6">
-              <h3 className="font-semibold text-slate-900 mb-4">Value Levers</h3>
-              <div className="space-y-3">
-                {[
-                  { lever: 'Sales Growth', pot: '+35%' },
-                  { lever: 'Margin Improvement', pot: '+12%' },
-                  { lever: 'Operational Efficiency', pot: '+8%' },
-                ].map((l, i) => (
-                  <div key={i} className="pb-3 border-b border-slate-200 last:border-b-0 flex justify-between items-center">
-                    <p className="font-medium text-slate-900 text-sm">{l.lever}</p>
-                    <p className="text-sm text-primary-600 font-semibold">{l.pot}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="flex gap-3">
+        <button className="px-6 py-2.5 border border-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-50">Back</button>
+        <button className="ml-auto px-6 py-2.5 border-2 border-primary-600 text-primary-600 font-semibold rounded-full hover:bg-primary-600 hover:text-white transition-colors">Next</button>
       </div>
     </div>
   )
